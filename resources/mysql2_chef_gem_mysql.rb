@@ -15,14 +15,13 @@ action :install do
   end
 
   execute 'hack to make mysql2 work on ubuntu 18' do
-    cwd release_path
     command <<EOF
 mv /opt/chef/embedded/lib/libcrypto.so.1.0.0 /opt/chef/embedded/lib/libcrypto.so.1.0.0-bak
 ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /opt/chef/embedded/lib/libcrypto.so.1.0.0
 mv /opt/chef/embedded/lib/libssl.so.1.0.0 /opt/chef/embedded/lib/libssl.so.1.0.0-bak
 ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /opt/chef/embedded/lib/libssl.so.1.0.0
 EOF
-    not_if { File.exist?('/opt/chef/embedded/lib/libcrypto.so.1.0.0-bak') }
+    not_if {File.exist?('/opt/chef/embedded/lib/libcrypto.so.1.0.0-bak')}
   end
 
   gem_package 'mysql2' do
