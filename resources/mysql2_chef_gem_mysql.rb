@@ -14,6 +14,7 @@ action :install do
     action :create
   end
 
+  #https://github.com/chef/chef/issues/7851
   execute 'hack to make mysql2 work on ubuntu 18' do
     command <<EOF
 mv /opt/chef/embedded/lib/libcrypto.so.1.0.0 /opt/chef/embedded/lib/libcrypto.so.1.0.0-bak
