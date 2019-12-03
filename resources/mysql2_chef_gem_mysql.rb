@@ -5,6 +5,8 @@ property :package_version, String
 provides :mysql2_chef_gem
 provides :mysql2_chef_gem_mysql
 
+puts "Alejandro #{RbConfig::CONFIG['bindir']}"
+
 action :install do
   include_recipe 'build-essential::default'
 
