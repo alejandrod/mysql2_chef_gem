@@ -21,6 +21,8 @@ mv /opt/chef/embedded/lib/libcrypto.so.1.0.0 /opt/chef/embedded/lib/libcrypto.so
 ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /opt/chef/embedded/lib/libcrypto.so.1.0.0
 mv /opt/chef/embedded/lib/libssl.so.1.0.0 /opt/chef/embedded/lib/libssl.so.1.0.0-bak
 ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /opt/chef/embedded/lib/libssl.so.1.0.0
+/opt/chef/embedded/bin/gem uninstall mysql2
+/opt/chef/embedded/bin/gem install mysql2
 EOF
     not_if { ::File.exist?('/opt/chef/embedded/lib/libcrypto.so.1.0.0-bak') }
   end
